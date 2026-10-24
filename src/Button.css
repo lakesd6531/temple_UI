@@ -1,0 +1,7 @@
+.Function_Button > img{
+    margin-right: 10px;
+}
+
+.Function_Button:hover{
+    background-color: whitesmoke;
+}

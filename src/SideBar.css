@@ -1,0 +1,42 @@
+.SideBar_Div_All{
+    margin: 0;
+    overflow: hidden;
+}
+
+.SideBar_Div{
+    margin: 0;
+    padding: 10px;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+.SideBar_Div > ul{
+    font-size: 16px;
+    list-style-type: none;
+    padding: 0;
+ }
+
+.SideBar_Div_Main{
+    margin-left: 15%;
+    width: 85%;
+    height: 85%;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.Link{
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.Link:hover{
+    background-color: whitesmoke;
+}
+
+.Link > img{
+    margin-right: 10px;
+}
