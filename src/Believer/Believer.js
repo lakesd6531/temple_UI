@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import AddBeliever from './AddBeliever.js';
+import EditBeliever from './EditBeliever.js';
+import DeleteBeliever from './DeleteBeliever.js';
 import ViewBeliever from './ViewBeliever.js';
 
 class Believer extends React.Component {
@@ -50,6 +52,8 @@ class Believer extends React.Component {
           <div>
             <div style = {{display : 'flex'}}>
               <AddBeliever getAllBeliever={this.getAllBeliever}/>
+              <EditBeliever getAllBeliever={this.getAllBeliever} selectedBeliever={this.state.selectedBeliever}/>
+              <DeleteBeliever getAllBeliever={this.getAllBeliever} selectedBeliever={this.state.selectedBeliever}/>
             </div>
             <ViewBeliever believerData={this.state.believerData} handleRowSelect={this.handleRowSelect}/>
           </div>
