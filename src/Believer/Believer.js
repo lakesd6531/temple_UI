@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddBeliever from './AddBeliever.js';
 import EditBeliever from './EditBeliever.js';
 import DeleteBeliever from './DeleteBeliever.js';
+import CreateReceipt from './CreateReceipt.js';
 import ViewBeliever from './ViewBeliever.js';
 
 class Believer extends React.Component {
@@ -50,10 +51,11 @@ class Believer extends React.Component {
     render() {
         return (
           <div>
-            <div style = {{display : 'flex'}}>
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px', marginBottom: '20px' }}>
               <AddBeliever getAllBeliever={this.getAllBeliever}/>
               <EditBeliever getAllBeliever={this.getAllBeliever} selectedBeliever={this.state.selectedBeliever}/>
               <DeleteBeliever getAllBeliever={this.getAllBeliever} selectedBeliever={this.state.selectedBeliever}/>
+              <CreateReceipt selectedBeliever={this.state.selectedBeliever}/>
             </div>
             <ViewBeliever believerData={this.state.believerData} handleRowSelect={this.handleRowSelect}/>
           </div>

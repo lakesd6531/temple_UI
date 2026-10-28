@@ -1,7 +1,25 @@
-.Function_Button > img{
-    margin-right: 10px;
+.Function_Button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    height: 36px;
+    padding: 6px 12px !important;
+    text-decoration: none !important;
+    font-size: 14px;
+    border-radius: 4px;
 }
 
-.Function_Button:hover{
+.Function_Button > img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Function_Button:hover {
     background-color: whitesmoke;
+    text-decoration: none !important;
 }

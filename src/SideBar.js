@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Believer from './Believer/Believer.js';
+import Receipt from './Receipt/Receipt.js';
 import './SideBar.css';
 import './Button.css';
 
@@ -14,6 +15,11 @@ const routes = [
         path: '/Believer',
         exact: true,
         main: () => <Believer/>
+    },
+    {
+        path: '/Receipt',
+        exact: true,
+        main: () => <Receipt/>
     }
 ];
 
@@ -25,6 +31,9 @@ class SideBar extends Component{
                     <div className="SideBar_Div">
                         <ul>
                             <li><Link className="Link" to = '/Believer'><img src="../../customer.png" alt="believer"/>信徒資訊</Link></li>
+                        </ul>
+                        <ul>
+                            <li><Link className="Link" to = '/Receipt'><img src="../../order.png" alt="receipt"/>收據</Link></li>
                         </ul>
                     </div>
                     
