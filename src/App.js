@@ -7,7 +7,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <label className="App-title">  朝山靈德宮管理系統</label>
+          <div className="App-header-brand">
+            <img src="./lantern.svg" alt="lantern" className="App-header-lantern" />
+            <span className="App-title">新竹市朝山靈德宮管理系統</span>
+            <img src="./lantern.svg" alt="lantern" className="App-header-lantern" />
+          </div>
+          <div className="App-header-blessing">
+            風調雨順 ‧ 國泰民安
+          </div>
         </header>
   
         <SideBar/>

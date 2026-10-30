@@ -38,5 +38,9 @@
 }
 
 .Link > img{
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
     margin-right: 10px;
+    vertical-align: middle;
 }

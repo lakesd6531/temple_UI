@@ -42,7 +42,7 @@ class Believer extends React.Component {
 
     handleRowSelect = (row, isSelected) => {
       if (isSelected) {
-          this.setState({selectedBeliever: row});
+        this.setState({selectedBeliever: row});
       } else {
         this.setState({selectedBeliever: undefined});
       }
@@ -57,7 +57,11 @@ class Believer extends React.Component {
               <DeleteBeliever getAllBeliever={this.getAllBeliever} selectedBeliever={this.state.selectedBeliever}/>
               <CreateReceipt selectedBeliever={this.state.selectedBeliever}/>
             </div>
-            <ViewBeliever believerData={this.state.believerData} handleRowSelect={this.handleRowSelect}/>
+            <ViewBeliever
+              believerData={this.state.believerData}
+              selectedBeliever={this.state.selectedBeliever}
+              handleRowSelect={this.handleRowSelect}
+            />
           </div>
         );
     }

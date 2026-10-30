@@ -11,19 +11,23 @@ class ViewBeliever extends React.Component {
         sortIndicator: true,
         noDataText: 'No data'
     };
-    this.selectRow = {
-        mode: 'radio',
-        bgColor: 'skyblue',
-        clickToSelect: true,
-        hideSelectColumn: true,
-        onSelect: props.handleRowSelect
-    };
   }
 
   render() {
+    const selectedKeys = this.props.selectedBeliever ? [this.props.selectedBeliever.id] : [];
+    const selectRow = {
+        mode: 'checkbox',
+        bgColor: 'skyblue',
+        clickToSelect: true,
+        hideSelectColumn: true,
+        selected: selectedKeys,
+        onSelect: (row, isSelected, e) => {
+            this.props.handleRowSelect(row, isSelected);
+        }
+    };
 
     return (
-        <BootstrapTable data={this.props.believerData} selectRow={this.selectRow} options={this.options} bordered={true} pagination={ true } striped hover condensed>
+        <BootstrapTable data={this.props.believerData} selectRow={selectRow} options={this.options} bordered={true} pagination={ true } striped hover condensed>
         <TableHeaderColumn 
             dataField="id"
             isKey

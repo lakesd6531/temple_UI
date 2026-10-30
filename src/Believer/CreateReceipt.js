@@ -20,15 +20,11 @@ class CreateReceipt extends React.Component {
     }
 
     handleShow = () => {
-        if (this.props.selectedBeliever === undefined) {
-            alert('請先選擇一位信徒!');
-            return;
-        }
-
+        const isBelieverSelected = this.props.selectedBeliever !== undefined;
         this.setState({
             show: true,
-            believerOid: this.props.selectedBeliever.id,
-            believerName: this.props.selectedBeliever.name || '',
+            believerOid: isBelieverSelected ? this.props.selectedBeliever.id : null,
+            believerName: isBelieverSelected ? (this.props.selectedBeliever.name || '') : '',
             total: '',
             category: '油香',
             handler: ''
@@ -38,7 +34,7 @@ class CreateReceipt extends React.Component {
     handleClose = () => {
         this.setState({
             show: false,
-            believerOid: '',
+            believerOid: null,
             believerName: '',
             total: '',
             category: '油香',
@@ -62,6 +58,11 @@ class CreateReceipt extends React.Component {
     }
 
     submitReceipt = () => {
+        if (!this.state.believerName || this.state.believerName.trim() === '') {
+            alert('信徒姓名為必填欄位!');
+            return;
+        }
+
         if (!this.state.total || this.state.total.trim() === '') {
             alert('金額為必填欄位!');
             return;
@@ -83,26 +84,31 @@ class CreateReceipt extends React.Component {
             return;
         }
 
+        const trimmedBelieverName = this.state.believerName.trim();
+        const trimmedHandler = this.state.handler.trim();
+
         let self = this;
         axios.post('http://localhost:8080/temple/receipt', {
             believerOid: this.state.believerOid,
-            believerName: this.state.believerName,
+            believerName: trimmedBelieverName,
             total: totalNum,
             category: this.state.category,
-            handler: this.state.handler.trim()
+            handler: trimmedHandler
         }).then(function (response) {
             const receiptData = {
                 believerOid: self.state.believerOid,
-                believerName: self.state.believerName,
+                believerName: trimmedBelieverName,
                 total: totalNum,
                 category: self.state.category,
-                handler: self.state.handler.trim(),
+                handler: trimmedHandler,
                 date: new Date()
             };
             self.setState({
                 show: false,
                 showPrint: true,
                 printReceiptData: receiptData,
+                believerOid: null,
+                believerName: '',
                 total: '',
                 handler: ''
             });
@@ -113,6 +119,8 @@ class CreateReceipt extends React.Component {
     }
 
     render() {
+        const isBelieverSelected = this.props.selectedBeliever !== undefined;
+
         return (
             <div>
                 <Button className="Function_Button" bsStyle="link" bsSize="small" onClick={this.handleShow}>
@@ -127,15 +135,18 @@ class CreateReceipt extends React.Component {
                         <Form horizontal>
                             <FormGroup>
                                 <Col componentClass={ControlLabel} sm={3}>
-                                    信徒姓名:
+                                    *信徒姓名:
                                 </Col>
                                 <Col sm={8}>
                                     <FormControl
                                         componentClass="input"
                                         type="text"
+                                        name="believerName"
+                                        placeholder="請輸入信徒姓名..."
                                         value={this.state.believerName}
-                                        readOnly
-                                        disabled
+                                        onChange={this.inputOnChange}
+                                        readOnly={isBelieverSelected}
+                                        disabled={isBelieverSelected}
                                     />
                                 </Col>
                             </FormGroup>

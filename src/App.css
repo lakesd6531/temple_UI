@@ -9,15 +9,68 @@
 }
 
 .App-header {
-  background-color: skyblue;
+  background: linear-gradient(135deg, #700a0a 0%, #9e1a1a 45%, #b52222 55%, #700a0a 100%);
   height: 80px;
-  padding: 20px;
+  padding: 0 28px;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid #d4af37;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  position: relative;
+  user-select: none;
+}
+
+.App-header::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background-color: #f39c12;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.App-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.App-header-lantern {
+  width: 38px;
+  height: 38px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.App-header-lantern:hover {
+  transform: scale(1.1) rotate(4deg);
 }
 
 .App-title {
-  font-size: 2.0em;
-  margin-right: 5px;
+  font-family: "DFKai-SB", "BiauKai", "標楷體", "Kaiti TC", serif;
+  font-size: 2.1em;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #fff8e7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.5);
+  margin: 0;
+}
+
+.App-header-blessing {
+  font-family: "DFKai-SB", "BiauKai", "標楷體", "Kaiti TC", serif;
+  font-size: 1.15em;
+  font-weight: bold;
+  letter-spacing: 4px;
+  color: #ffd980;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  padding: 4px 14px;
+  border: 1px solid rgba(243, 156, 18, 0.5);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.15);
 }
 .App-subtitle {
   font-size: 1.0em;
